@@ -143,6 +143,7 @@ testOnly *.CustomFunctionsSuite
 
 mvn test -Dtest=CustomFunctionsSuite
 
+export PATH=/opt/apache-maven-3.5.4/bin:$PATH
 ./dev/make-distribution.sh --name custom-spark --tgz
 tar -zxvf spark-2.4.0-bin-custom-spark.tgz
 
