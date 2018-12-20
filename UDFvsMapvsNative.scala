@@ -26,7 +26,6 @@ val resultSparkNative = testDf.withColumn("addOne", 'id + 1)
 resultSparkNative.show(5)
 
 val resultSparkNative = testDf.withColumn("addOne", 'id.plus(1))
-resultSparkNative: org.apache.spark.sql.DataFrame = [id: bigint, addOne: bigint]
 
 resultSparkNative.show(5)
 
@@ -35,6 +34,7 @@ resultSparkNative.explain
 averageTime { resultSparkNative.count }
 
 val resultSparkNativeFilterParquet = testDfParquet.filter('id.plus(1) === 2)
+
 resultSparkNativeFilterParquet.explain
 
 averageTime { resultSparkNativeFilterParquet.count }
@@ -46,6 +46,7 @@ import org.apache.spark.sql.functions.udf
 val addOneUdf = udf { x: Long => x + 1 }
 
 val resultUdf = testDf.withColumn("addOne", addOneUdf('id))
+
 resultUdf.show(5)
 
 resultUdf.explain
